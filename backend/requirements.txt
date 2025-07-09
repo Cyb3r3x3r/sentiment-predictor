@@ -4,6 +4,6 @@ transformers==4.39.3
 torch==2.1.2
 pydantic
 datasets
-numpy
+numpy==1.24.4
 pytest
 httpx
