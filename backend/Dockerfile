@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir transformers>=4.41.0 torch>=2.6.0 emoji sentencep
 
 RUN python3 -c "\
 from transformers import pipeline; \
-pipe = pipeline('sentiment-analysis', model='finiteautomata/bertweet-base-sentiment-analysis'); \
+pipe = pipeline('sentiment-analysis', model='distilbert/distilbert-base-uncased-finetuned-sst-2-english'); \
 pipe.model.save_pretrained('/download/model'); \
 pipe.tokenizer.save_pretrained('/download/model')"
 

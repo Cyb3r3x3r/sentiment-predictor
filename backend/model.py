@@ -1,7 +1,7 @@
 from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import os
 
-MODEL_NAME = "finiteautomata/bertweet-base-sentiment-analysis"
+MODEL_NAME = "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
 MODEL_DIR = "./model"  # 👈 Changed from "../model" to "./model"
 
 def load_model():
