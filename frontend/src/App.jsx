@@ -23,12 +23,12 @@ function App() {
     borderRadius: "8px",
     color: dark ? "#f5f5f5" : "black",
   });
-
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
   const handlePredict = async () => {
     setLoading(true);
     setResult(null);
     try {
-      const res = await fetch("http://localhost:8000/predict", {
+      const res = await fetch(`${API_URL}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

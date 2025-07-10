@@ -1,9 +1,8 @@
-from transformers import pipeline,AutoModelForSequenceClassification,AutoTokenizer
+from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import os
 
-
 MODEL_NAME = "distilbert-base-uncased-finetuned-sst-2-english"
-MODEL_DIR = "../model"
+MODEL_DIR = "./model"  # 👈 Changed from "../model" to "./model"
 
 def load_model():
     required_files = ["config.json", "pytorch_model.bin", "tokenizer_config.json"]
@@ -15,7 +14,7 @@ def load_model():
         model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
         tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
     else:
-        print("ℹ️  Fine-tuned model not found. Loading default model from HuggingFace Hub...")
+        print("ℹ️ Fine-tuned model not found. Loading default model from HuggingFace Hub...")
         model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
