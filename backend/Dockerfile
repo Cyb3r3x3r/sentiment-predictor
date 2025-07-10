@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir transformers torch==2.1.2+cpu --extra-index-url h
 
 RUN python3 -c "\
 from transformers import pipeline; \
-pipe = pipeline('sentiment-analysis', model='mrm8488/bert-tiny-finetuned-sst2'); \
+pipe = pipeline('sentiment-analysis', model='mrm8488/deberta-v3-small-finetuned-sst2'); \
 pipe.model.save_pretrained('/download/model'); \
 pipe.tokenizer.save_pretrained('/download/model')"
 
