@@ -3,11 +3,11 @@ FROM python:3.10-slim AS downloader
 
 WORKDIR /download
 
-RUN pip install --no-cache-dir transformers torch==2.1.2+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir transformers torch==2.1.2+cpu emoji sentencepiece --extra-index-url https://download.pytorch.org/whl/cpu
 
 RUN python3 -c "\
 from transformers import pipeline; \
-pipe = pipeline('sentiment-analysis', model='distilbert-base-uncased'); \
+pipe = pipeline('sentiment-analysis', model='finiteautomata/bertweet-base-sentiment-analysis'); \
 pipe.model.save_pretrained('/download/model'); \
 pipe.tokenizer.save_pretrained('/download/model')"
 

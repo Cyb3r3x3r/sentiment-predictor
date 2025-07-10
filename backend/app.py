@@ -20,11 +20,23 @@ class PredictRequest(BaseModel):
 
 @app.post("/predict")
 def predict_sentiment(req: PredictRequest):
-    print("predicting...")       #debug text
+    print("predicting...")  # debug text
+
     if not req.text.strip():
-        raise HTTPException(status_code=400,detail="Text input is empty")
+        raise HTTPException(status_code=400, detail="Text input is empty")
+
     result = sentiment_pipeline(req.text)[0]
+
+    label_map = {
+        "POS": "positive",
+        "NEU": "neutral",
+        "NEG": "negative"
+    }
+
+    raw_label = result["label"].upper()
+    mapped_label = label_map.get(raw_label, raw_label.lower())  # fallback in case of weird label
+
     return {
-        "label":result["label"].lower(),
-        "score":round(result["score"],4)
+        "label": mapped_label,
+        "score": round(result["score"], 4)
     }

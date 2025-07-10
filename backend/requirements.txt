@@ -8,3 +8,5 @@ datasets
 numpy==1.24.4
 pytest
 httpx
+emoji
+sentencepiece
