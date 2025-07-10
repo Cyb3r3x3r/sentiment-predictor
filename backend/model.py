@@ -1,7 +1,7 @@
 from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import os
 
-MODEL_NAME = "distilbert-base-uncased-finetuned-sst-2-english"
+MODEL_NAME = "mrm8488/bert-tiny-finetuned-sst2"
 MODEL_DIR = "./model"  # 👈 Changed from "../model" to "./model"
 
 def load_model():
