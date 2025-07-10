@@ -1,9 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 function App() {
   const [text, setText] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.backgroundColor = "#121212";
+      document.body.style.color = "#f5f5f5";
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+    }
+  }, [darkMode]);
+    const getResultStyle = (dark) => ({
+    marginTop: "1rem",
+    padding: "1rem",
+    backgroundColor: dark ? "#1e1e1e" : "#f0f0f0",
+    borderRadius: "8px",
+    color: dark ? "#f5f5f5" : "black",
+  });
 
   const handlePredict = async () => {
     setLoading(true);
@@ -28,6 +47,22 @@ function App() {
 
   return (
     <div style={styles.container}>
+          <button
+      onClick={() => setDarkMode(!darkMode)}
+      style={{
+        position: "absolute",
+        top: "1rem",
+        right: "1rem",
+        background: darkMode ? "#f5f5f5" : "#121212",
+        color: darkMode ? "#121212" : "#f5f5f5",
+        border: "none",
+        borderRadius: "5px",
+        padding: "0.4rem 0.8rem",
+        cursor: "pointer",
+      }}
+    >
+      {darkMode ? "☀️ Light" : "🌙 Dark"}
+    </button>
       <h1>Sentiment Predictor</h1>
       <textarea
         style={styles.textarea}
@@ -41,11 +76,11 @@ function App() {
       </button>
 
       {result && (
-        <div style={styles.result}>
-          <p><strong>Label:</strong> {result.label}</p>
-          <p><strong>Confidence:</strong> {(result.score * 100).toFixed(2)}%</p>
-        </div>
-      )}
+      <div style={getResultStyle(darkMode)}>
+        <p><strong>Label:</strong> {result.label}</p>
+        <p><strong>Confidence:</strong> {(result.score * 100).toFixed(2)}%</p>
+      </div>
+    )}
     </div>
   );
 }

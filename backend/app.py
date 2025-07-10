@@ -20,7 +20,7 @@ class PredictRequest(BaseModel):
 
 @app.post("/predict")
 def predict_sentiment(req: PredictRequest):
-    # print("predicting...")       debug text
+    print("predicting...")       #debug text
     if not req.text.strip():
         raise HTTPException(status_code=400,detail="Text input is empty")
     result = sentiment_pipeline(req.text)[0]
