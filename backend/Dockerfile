@@ -3,7 +3,7 @@ FROM python:3.10-slim AS downloader
 
 WORKDIR /download
 
-RUN pip install --no-cache-dir transformers>=4.41.0 torch>=2.6.0+cpu emoji sentencepiece --extra-index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir transformers>=4.41.0 torch>=2.6.0 emoji sentencepiece --extra-index-url https://download.pytorch.org/whl/cpu
 
 RUN python3 -c "\
 from transformers import pipeline; \
