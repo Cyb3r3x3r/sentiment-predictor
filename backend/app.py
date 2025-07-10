@@ -6,10 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 sentiment_pipeline = load_model()
 
-#Allow frontend ruuning at vite port(5173)
+#Allow frontend ruuning at port 5173 and 3000
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
