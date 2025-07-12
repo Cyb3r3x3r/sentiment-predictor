@@ -84,3 +84,7 @@ Fine-tuned weights are saved to ./model/ and loaded by the backend automatically
   "score": 0.9823
 }
 ```
+
+### Video explanation
+
+Watch the demo and video explanation here - https://youtu.be/W7NfYwCAlH8
